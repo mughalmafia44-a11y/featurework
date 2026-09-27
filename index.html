@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>featuremakeassighment</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#050505;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* HEADER */
+header{
+    height:75px;
+    background:#0b0b0b;
+    border-bottom:1px solid #b88928;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 6%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:800;
+    color:#e9bd54;
+    cursor:pointer;
+}
+
+.logo span{
+    color:#fff;
+}
+
+nav{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+nav button{
+    background:transparent;
+    border:0;
+    color:#ccc;
+    padding:10px 12px;
+    cursor:pointer;
+    border-radius:7px;
+    font-size:13px;
+}
+
+nav button:hover,
+nav button.active{
+    background:#d1a33c;
+    color:#080808;
+}
+
+/* ALL PAGES */
+.page{
+    display:none;
+    min-height:calc(100vh - 75px);
+    animation:fade .35s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* HOME HERO */
+.hero{
+    min-height:600px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:70px 20px;
+    background:
+    radial-gradient(circle at 50% 0%,#49330a 0%,#15110a 25%,#070707 65%);
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 18px;
+    border:1px solid #d3a63e;
+    color:#e9bd54;
+    border-radius:30px;
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(42px,7vw,72px);
+    line-height:1.05;
+    margin-bottom:22px;
+}
+
+.gold{
+    color:#e9bd54;
+}
+
+.hero p{
+    color:#aaa;
+    line-height:1.8;
+    max-width:700px;
+    margin:auto;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    border:0;
+    background:linear-gradient(135deg,#f4d275,#a87214);
+    color:#080808;
+    font-weight:bold;
+    padding:13px 23px;
+    border-radius:8px;
+    cursor:pointer;
+    margin:7px 4px;
+    text-decoration:none;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px #000;
+}
+
+.btn.dark{
+    background:#111;
+    color:#e9bd54;
+    border:1px solid #725617;
+}
+
+/* CONTENT */
+.container{
+    width:min(1100px,90%);
+    margin:auto;
+}
+
+.section{
+    padding:65px 0;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.title h2{
+    font-size:38px;
+}
+
+.title p{
+    color:#888;
+    margin-top:10px;
+}
+
+/* CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:linear-gradient(145deg,#171717,#0b0b0b);
+    border:1px solid #3b2c11;
+    border-radius:17px;
+    padding:27px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:#d2a43b;
+    box-shadow:0 15px 35px #000;
+}
+
+.icon{
+    font-size:38px;
+    margin-bottom:14px;
+}
+
+.card h3{
+    color:#e9bd54;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#999;
+    line-height:1.7;
+    margin-bottom:12px;
+}
+
+/* INNER PAGE */
+.inner{
+    padding:70px 0;
+    min-height:calc(100vh - 75px);
+    background:
+    radial-gradient(circle at top,#241a07,#080808 55%);
+}
+
+.page-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.page-title h1{
+    font-size:48px;
+    margin-bottom:10px;
+}
+
+.page-title p{
+    color:#999;
+}
+
+.box{
+    width:min(720px,100%);
+    margin:auto;
+    background:#101010;
+    border:1px solid #473512;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 20px 50px #000;
+}
+
+label{
+    display:block;
+    color:#ddd;
+    margin:15px 0 7px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:14px;
+    background:#080808;
+    border:1px solid #493715;
+    border-radius:8px;
+    color:white;
+    outline:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#e9bd54;
+}
+
+textarea{
+    height:130px;
+    resize:vertical;
+}
+
+.notice{
+    background:#191309;
+    border-left:4px solid #e9bd54;
+    padding:16px;
+    border-radius:6px;
+    color:#bbb;
+    line-height:1.7;
+    margin:20px 0;
+}
+
+/* PLANS */
+.price{
+    font-size:34px;
+    color:#e9bd54;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+/* TABLE */
+.table-wrap{
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+th,td{
+    padding:15px;
+    text-align:left;
+    border-bottom:1px solid #30240e;
+}
+
+th{
+    color:#e9bd54;
+}
+
+/* FOOTER */
+footer{
+    border-top:1px solid #2d230e;
+    background:#080808;
+    color:#777;
+    text-align:center;
+    padding:25px;
+}
+
+/* MOBILE */
+@media(max-width:800px){
+
+    header{
+        height:auto;
+        padding:17px 5%;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    nav button{
+        font-size:11px;
+        padding:8px;
+    }
+
+    .hero{
+        min-height:550px;
+    }
+
+    .box{
+        padding:23px;
+    }
+
+    .page-title h1{
+        font-size:38px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+    <div class="logo" onclick="showPage('home')">
+        featuremake<span>assighment</span>
+    </div>
+
+    <nav>
+
+        <button onclick="showPage('home')" id="nav-home">
+            Home
+        </button>
+
+        <button onclick="showPage('today')" id="nav-today">
+            Today Work
+        </button>
+
+        <button onclick="showPage('plans')" id="nav-plans">
+            Plans
+        </button>
+
+        <button onclick="showPage('deposit')" id="nav-deposit">
+            Deposit
+        </button>
+
+        <button onclick="showPage('withdrawal')" id="nav-withdrawal">
+            Withdrawal
+        </button>
+
+        <button onclick="showPage('submit')" id="nav-submit">
+            Submit Work
+        </button>
+
+        <button onclick="showPage('reviews')" id="nav-reviews">
+            Reviews
+        </button>
+
+        <button onclick="showPage('contact')" id="nav-contact">
+            Contact
+        </button>
+
+        <button onclick="showPage('login')" id="nav-login">
+            Login
+        </button>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<div class="page active" id="home">
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="badge">
+PREMIUM ASSIGNMENT WORK PLATFORM
+</div>
+
+<h1>
+Work Smart.<br>
+<span class="gold">Complete Assignments.</span>
+</h1>
+
+<p>
+Welcome to featuremakeassighment.
+A premium assignment-work platform where you can
+manage today's work, submit assignments,
+view packages and manage your account.
+</p>
+
+<br>
+
+<button class="btn" onclick="showPage('today')">
+Today's Work
+</button>
+
+<button class="btn dark" onclick="showPage('plans')">
+View Plans
+</button>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<div class="container">
+
+<div class="title">
+<h2>Assignment <span class="gold">Dashboard</span></h2>
+<p>Select any option to continue.</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">📋</div>
+<h3>Today Work</h3>
+<p>View your current assignment and today's task.</p>
+<button class="btn" onclick="showPage('today')">
+Open
+</button>
+</div>
+
+<div class="card">
+<div class="icon">📤</div>
+<h3>Submit Work</h3>
+<p>Submit your completed assignment.</p>
+<button class="btn" onclick="showPage('submit')">
+Open
+</button>
+</div>
+
+<div class="card">
+<div class="icon">💳</div>
+<h3>Deposit</h3>
+<p>Submit your payment and transaction details.</p>
+<button class="btn" onclick="showPage('deposit')">
+Open
+</button>
+</div>
+
+<div class="card">
+<div class="icon">💰</div>
+<h3>Withdrawal</h3>
+<p>Submit a withdrawal request.</p>
+<button class="btn" onclick="showPage('withdrawal')">
+Open
+</button>
+</div>
+
+<div class="card">
+<div class="icon">💎</div>
+<h3>Plan Package</h3>
+<p>Explore available assignment packages.</p>
+<button class="btn" onclick="showPage('plans')">
+Open
+</button>
+</div>
+
+<div class="card">
+<div class="icon">⭐</div>
+<h3>Reviews</h3>
+<p>Read member reviews.</p>
+<button class="btn" onclick="showPage('reviews')">
+Open
+</button>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= TODAY WORK ================= -->
+
+<div class="page" id="today">
+
+<section class="inner">
+
+<div class="container">
+
+<div class="page-title">
+<h1>Today's <span class="gold">Work</span></h1>
+<p>Assignment available for today.</p>
+</div>
+
+<div class="box">
+
+<h2 class="gold">
+Assignment #001
+</h2>
+
+<div class="notice">
+
+<b>Status:</b> Available<br>
+<b>Deadline:</b> Today<br>
+<b>Category:</b> Assignment Work
+
+</div>
+
+<p style="color:#aaa;line-height:1.8;">
+Complete the assigned task according to the
+provided instructions and submit your completed
+work before the deadline.
+</p>
+
+<br>
+
+<button class="btn" onclick="showPage('submit')">
+Submit This Work
+</button>
+
+<button class="btn dark" onclick="showPage('home')">
+← Back Home
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= DEPOSIT ================= -->
+
+<div class="page" id="deposit">
+
+<section class="inner">
+
+<div class="container">
+
+<div class="page-title">
+
+<h1>Make a <span class="gold">Deposit</span></h1>
+
+<p>Submit your payment information.</p>
+
+</div>
+
+<div class="box">
+
+<div class="notice">
+
+<b>Payment Method:</b> Easypaisa<br>
+<b>Account:</b> 03162858618<br>
+Please check your transaction information carefully.
+
+</div>
+
+<label>Select Package</label>
+
+<select id="depositPlan">
+
+<option>Starter — PKR 300</option>
+<option>Growth — PKR 600</option>
+<option>Pro — PKR 1,000</option>
+
+</select>
+
+<label>TRX ID</label>
+
+<input
+type="text"
+id="trx"
+placeholder="Enter transaction ID"
+>
+
+<label>Payment Screenshot</label>
+
+<input type="file">
+
+<button class="btn" onclick="makeDeposit()">
+Submit Deposit
+</button>
+
+<button class="btn dark" onclick="showPage('home')">
+← Back Home
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= WITHDRAWAL ================= -->
+
+<div class="page" id="withdrawal">
+
+<section class="inner">
+
+<div class="container">
+
+<div class="page-title">
+
+<h1>Request <span class="gold">Withdrawal</span></h1>
+
+<p>Enter your withdrawal details.</p>
+
+</div>
+
+<div class="box">
+
+<label>Account Holder Name</label>
+
+<input
+type="text"
+id="holder"
+placeholder="Full name"
+>
+
+<label>Account Number</label>
+
+<input
+type="text"
+id="account"
+placeholder="Account number"
+>
+
+<label>Withdrawal Amount</label>
+
+<input
+type="number"
+id="amount"
+placeholder="PKR amount"
+>
+
+<button class="btn" onclick="makeWithdrawal()">
+Request Withdrawal
+</button>
+
+<button class="btn dark" onclick="showPage('home')">
+← Back Home
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= SUBMIT WORK ================= -->
+
+<div class="page" id="submit">
+
+<section class="inner">
+
+<div class="container">
+
+<div class="page-title">
+
+<h1>Submit <span class="gold">Work</span></h1>
+
+<p>Submit your completed assignment.</p>
+
+</div>
+
+<div class="box">
+
+<label>Your Name</label>
+
+<input
+type="text"
+id="studentName"
+placeholder="Enter your name"
+>
+
+<label>Assignment ID</label>
+
+<input
+type="text"
+placeholder="ASS-001"
+>
+
+<label>Work Link</label>
+
+<input
+type="text"
+placeholder="Paste your work link"
+>
+
+<label>Upload Work</label>
+
+<input type="file">
+
+<label>Notes</label>
+
+<textarea
+placeholder="Write your notes..."
+></textarea>
+
+<button class="btn" onclick="submitAssignment()">
+Submit Assignment
+</button>
+
+<button class="btn dark" onclick="showPage('home')">
+← Back Home
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= PLANS ================= -->
+
+<div class="page" id="plans">
+
+<section class="inner">
+
+<div class="container">
+
+<div class="page-title">
+
+<h1>Plan <span class="gold">Packages</span></h1>
+
+<p>Select an available assignment package.</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">🥉</div>
+
+<h3>Starter Plan</h3>
+
+<div class="price">
+PKR 300
+</div>
+
+<p>Daily earning: PKR 30</p>
+<p>1 Assignment</p>
+
+<button
+class="btn"
+onclick="choosePlan('Starter Plan')">
+Choose
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🥈</div>
+
+<h3>Growth Plan</h3>
+
+<div class="price">
+PKR 600
+</div>
+
+<p>Daily earning: PKR 70</p>
+<p>2 Assignments</p>
+
+<button
+class="btn"
+onclick="choosePlan('Growth Plan')">
+Choose
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🥇</div>
+
+<h3>Pro Plan</h3>
+
+<div class="price">
+PKR 1,000
+</div>
+
+<p>Daily earning: PKR 100</p>
+<p>3 Assignments</p>
+
+<button
+class="btn"
+onclick="choosePlan('Pro Plan')">
+Choose
+</button>
+
+</div>
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+
+<button class="btn dark" onclick="showPage('home')">
+← Back Home
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= REVIEWS ================= -->
+
+<div class="page" id="reviews">
+
+<section class="inner">
+
+<div class="container">
+
+<div class="page-title">
+
+<h1>Member <span class="gold">Reviews</span></h1>
+
+<p>Feedback from platform members.</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">⭐</div>
+<h3>Ayesha</h3>
+<p>
+"The website is simple and easy to navigate."
+</p>
+</div>
+
+<div class="card">
+<div class="icon">⭐</div>
+<h3>Hira</h3>
+<p>
+"The black and golden design looks premium."
+</p>
+</div>
+
+<div class="card">
+<div class="icon">⭐</div>
+<h3>Sana</h3>
+<p>
+"I like the assignment work section."
+</p>
+</div>
+
+</div>
+
+<br>
+
+<div style="text-align:center;">
+
+<button class="btn dark" onclick="showPage('home')">
+← Back Home
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= CONTACT ================= -->
+
+<div class="page" id="contact">
+
+<section class="inner">
+
+<div class="container">
+
+<div class="page-title">
+
+<h1>Contact <span class="gold">Us</span></h1>
+
+<p>Send a message to support.</p>
+
+</div>
+
+<div class="box">
+
+<label>Your Name</label>
+
+<input
+type="text"
+id="contactName"
+placeholder="Your name"
+>
+
+<label>Email</label>
+
+<input
+type="email"
+id="contactEmail"
+placeholder="Your email"
+>
+
+<label>Message</label>
+
+<textarea
+id="contactMessage"
+placeholder="Write your message..."
+></textarea>
+
+<button class="btn" onclick="sendMessage()">
+Send Message
+</button>
+
+<button class="btn dark" onclick="showPage('home')">
+← Back Home
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- ================= LOGIN ================= -->
+
+<div class="page" id="login">
+
+<section class="inner">
+
+<div class="container">
+
+<div class="page-title">
+
+<h1>Member <span class="gold">Login</span></h1>
+
+<p>Login to your assignment account.</p>
+
+</div>
+
+<div class="box">
+
+<label>Email</label>
+
+<input
+type="email"
+id="loginEmail"
+placeholder="Enter your email"
+>
+
+<label>Password</label>
+
+<input
+type="password"
+id="loginPassword"
+placeholder="Enter your password"
+>
+
+<button class="btn" onclick="loginUser()">
+Login
+</button>
+
+<button class="btn dark" onclick="showPage('home')">
+← Back Home
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 featuremakeassighment
+<br>
+Assignment Work Platform
+
+</footer>
+
+
+<script>
+
+/* PAGE SWITCHING */
+
+function showPage(page){
+
+    document.querySelectorAll(".page")
+    .forEach(function(p){
+        p.classList.remove("active");
+    });
+
+    document.getElementById(page)
+    .classList.add("active");
+
+    document.querySelectorAll("nav button")
+    .forEach(function(btn){
+        btn.classList.remove("active");
+    });
+
+    let navButton =
+        document.getElementById("nav-" + page);
+
+    if(navButton){
+        navButton.classList.add("active");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* DEPOSIT */
+
+function makeDeposit(){
+
+    let trx =
+        document.getElementById("trx").value;
+
+    if(trx === ""){
+
+        alert("Please enter your TRX ID.");
+
+        return;
+    }
+
+    alert(
+        "Deposit submitted successfully!\n\n" +
+        "TRX ID: " + trx
+    );
+
+}
+
+
+/* WITHDRAWAL */
+
+function makeWithdrawal(){
+
+    let name =
+        document.getElementById("holder").value;
+
+    let amount =
+        document.getElementById("amount").value;
+
+    if(name === "" || amount === ""){
+
+        alert(
+            "Please enter your name and amount."
+        );
+
+        return;
+    }
+
+    alert(
+        "Withdrawal request submitted!\n\n" +
+        "Name: " + name +
+        "\nAmount: PKR " + amount
+    );
+
+}
+
+
+/* SUBMIT WORK */
+
+function submitAssignment(){
+
+    let name =
+        document.getElementById("studentName").value;
+
+    if(name === ""){
+
+        alert("Please enter your name.");
+
+        return;
+    }
+
+    alert(
+        "Assignment submitted successfully!\n\n" +
+        "Student: " + name
+    );
+
+}
+
+
+/* PLAN */
+
+function choosePlan(plan){
+
+    alert(
+        plan +
+        " selected!\n\n" +
+        "Opening Deposit page..."
+    );
+
+    showPage("deposit");
+
+}
+
+
+/* CONTACT */
+
+function sendMessage(){
+
+    let name =
+        document.getElementById("contactName").value;
+
+    let email =
+        document.getElementById("contactEmail").value;
+
+    if(name === "" || email === ""){
+
+        alert(
+            "Please enter your name and email."
+        );
+
+        return;
+    }
+
+    alert(
+        "Message sent successfully!\n\n" +
+        "Thank you " + name + "!"
+    );
+
+}
+
+
+/* LOGIN */
+
+function loginUser(){
+
+    let email =
+        document.getElementById("loginEmail").value;
+
+    let password =
+        document.getElementById("loginPassword").value;
+
+    if(email === "" || password === ""){
+
+        alert(
+            "Please enter email and password."
+        );
+
+        return;
+    }
+
+    alert(
+        "Login successful!\n\n" +
+        "Welcome to featuremakeassighment!"
+    );
+
+}
+
+
+/* START HOME */
+
+showPage("home");
+
+</script>
+
+</body>
+</html>
